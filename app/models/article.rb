@@ -1,10 +1,9 @@
 class Article < ActiveRecord::Base
+ has_one :category
 
-	has_one :category
+ validates_presence_of :title
+ validates_presence_of :content
 
-	validate_presence_of :title
-	validate_presence_of :content
-
-	scope :alphabetical, order('title')
-	scope :active, where('active = ?', true)
+ scope :alpabetical, order('title')
+ scope :active, where('active =?', true)
 end
